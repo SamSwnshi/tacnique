@@ -1,12 +1,10 @@
-// Basic Add Employee functionality for Employee Directory
 
-// Store employees in memory (populated from table on load)
 let employees = window.initialEmployees || [];
 let filteredEmployees = [...employees];
 let currentPage = 1;
 let pageSize = 3;
 
-// Helper to get form values
+
 function getFormData() {
   return {
     id: 'E' + (Math.floor(Math.random() * 10000)),
@@ -18,7 +16,7 @@ function getFormData() {
   };
 }
 
-// Add employee to table
+
 function addEmployeeToTable(emp) {
   const tbody = document.getElementById('employee-tbody');
   const tr = document.createElement('tr');
@@ -37,7 +35,6 @@ function addEmployeeToTable(emp) {
   tbody.appendChild(tr);
 }
 
-// Open Add Employee form
 window.openAddForm = function() {
   document.getElementById('form-title').textContent = 'Add Employee';
   document.getElementById('emp-form').reset();
@@ -133,7 +130,7 @@ function applyFilters() {
 }
 
 window.onload = function() {
-  // No need to parse table rows anymore
+
   filteredEmployees = [...employees];
   const showCount = document.getElementById('show-count');
   if (showCount) {
@@ -142,7 +139,7 @@ window.onload = function() {
   renderEmployeesPage(currentPage);
 };
 
-// If you want to support changing page size from the dropdown:
+
 document.addEventListener('DOMContentLoaded', function() {
   const showCount = document.getElementById('show-count');
   if (showCount) {
@@ -153,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
       renderEmployeesPage(currentPage);
     });
   }
-  // Search/filter event listeners
+
   const searchInput = document.getElementById('search');
   const filterBtn = document.getElementById('filter-btn');
   if (searchInput) {
@@ -164,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Sort employees and re-render table
+
 function renderEmployees(empList) {
   const tbody = document.getElementById('employee-tbody');
   tbody.innerHTML = '';
